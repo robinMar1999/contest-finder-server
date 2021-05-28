@@ -1,0 +1,1 @@
+1. Change AppName in config/default.json for mongoURI
