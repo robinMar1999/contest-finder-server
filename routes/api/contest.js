@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     const allContests = await Contest.findOne({ name: "all" });
     let doneContests = await Contest.findOne({ name: "done" });
     if (!allContests) {
-      return res.status(400).json({ error: "All contests not found" });
+      return res.json({ contests: [] });
     }
     if (!doneContests) {
       doneContests = new Contest({
@@ -66,7 +66,7 @@ router.post("/update", (req, res) => {
           ) {
             // do nothing
           } else {
-            allContests.contest_ids.push(parseInt(contest_id));
+            allContests.contest_ids.push(parseInt(contest.id));
           }
         });
 
